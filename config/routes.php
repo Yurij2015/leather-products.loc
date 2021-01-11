@@ -2,11 +2,11 @@
 /**
  * Created by PhpStorm.
  * File: routes.php
- * Date: 07/07/2020
+ * Date: 07/01/2021
  * Time: 22:11
  */
 return array(
-    //User
+    // Пользователь
     'product/([0-9]+)' => 'product/view/$1',
     'catalog' => 'catalog/index',
     'category/([0-9]+)/page-([0-9]+)' => 'catalog/category/$1/$2',
@@ -23,7 +23,7 @@ return array(
     'cabinet' => 'cabinet/index',
     'contact-form' => 'cabinet/contactForm',
 
-    //Admin
+    // Администратор
     'admin/product/create' => 'adminProduct/create',
     'admin/product/update/([0-9]+)' => 'adminProduct/update/$1',
     'admin/product/delete/([0-9]+)' => 'adminProduct/delete/$1',

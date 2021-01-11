@@ -9,7 +9,7 @@ include ROOT . "/views/layouts/header.php";
             <div class="list-group">
                 <?php foreach ($categories as $categoryItem) : ?>
                     <a href="/category/<?= $categoryItem['id']; ?>"
-                       class="list-group-item <?php if ($categoryId == $categoryItem['id']) echo 'active'; ?>" style="text-decoration: none;">
+                       class="list-group-item <?php if ($categoryId == $categoryItem['id']) echo 'active'; ?>" style="text-decoration: none; color: #1a1a1a">
                         <?= $categoryItem['name']; ?>
                     </a>
                 <?php endforeach; ?>
@@ -28,7 +28,7 @@ include ROOT . "/views/layouts/header.php";
                             </a>
                             <div class="card-body">
                                 <h6 class="card-title">
-                                    <a href="/product/<?= $product['id'] ?>"><?= ucwords(strtolower($product['name'])) ?></a>
+                                    <a href="/product/<?= $product['id'] ?>" style="text-decoration: none; color: #1a1a1a"><?= ucwords(strtolower($product['name'])) ?></a>
                                 </h6>
                                 <h5><?= $product['price'] ?></h5>
                                 <p class="card-text"><?= $product['brand'] ?></p>
