@@ -8,9 +8,35 @@ include ROOT . "/views/layouts/header.php";
             <h3 class="my-3">Категории</h3>
             <div class="list-group">
                 <?php foreach ($categories as $categoryItem) : ?>
-                    <a href="/category/<?= $categoryItem['id'] ?>" class="list-group-item"
-                       style="text-decoration: none; color: #1a1a1a">
+                    <?php
+                    if (!Category::getChildCategories($categoryItem['id'])) {
+                        ?>
+                        <a href="/category/<?= $categoryItem['id'] ?>" class="list-group-item"
+                        style="text-decoration: none; color: #1a1a1a">
                         <?= $categoryItem['name'] ?>
+                    <?php } ?>
+                    <?php
+                    if (Category::getChildCategories($categoryItem['id'])) {
+                        $count = count(Category::getChildCategories($categoryItem['id']));
+                        ?>
+                        <a class="dropdown-toggle list-group-item" href="#" role="button"
+                           id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" style="text-decoration: none; color: #1a1a1a">
+                            <?= $categoryItem['name'] ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <?php
+                            for ($i = 0; $i < $count; $i++) {
+                                ?>
+                                <a class="dropdown-item"
+                                   href="/category/<?= Category::getChildCategories($categoryItem['id'])[$i]['id'] ?>"><?= Category::getChildCategories($categoryItem['id'])[$i]['name'] ?></a>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
                     </a>
                 <?php endforeach; ?>
             </div>
@@ -52,7 +78,7 @@ include ROOT . "/views/layouts/header.php";
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                             <a href="/product/<?= $product['id'] ?>">
-                                <img class="card-img-top" src="<?= Product::getImage($product['id']); ?>" alt=""></a>
+                                <img class="card-img-top" src="<?= Product::getImage($product['id']) ?>" alt=""></a>
                             <div class="card-body">
                                 <h6 class="card-title">
                                     <a href="/product/<?= $product['id'] ?>"

@@ -3,12 +3,25 @@
 
 class Category
 {
-    public static function getCategoriesList()
+    public static function getChildCategories($parent_id)
     {
+        // Соединение с БД
         $db = Db::getConnection();
         $categoryList = array();
 
-        $result = $db->query("SELECT id, name FROM category ORDER BY sort_order ASC");
+        // Текст запроса к БД
+        $sql = 'SELECT * FROM category WHERE parent_id = :id';
+
+        // Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $parent_id, PDO::PARAM_INT);
+
+        // Указываем, что хотим получить данные в виде массива
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        // Выполняем запрос
+        $result->execute();
+
         $i = 0;
         while ($row = $result->fetch()) {
             $categoryList[$i]['id'] = $row['id'];
@@ -16,11 +29,27 @@ class Category
             $i++;
         }
         return $categoryList;
+
+        // Возвращаем данные
+//        return $result->fetch();
     }
 
-    public  static function getParentCategory($category_id){
+    public static function getCategoriesList()
+    {
+        $db = Db::getConnection();
+        $categoryList = array();
 
+        $result = $db->query("SELECT id, name, parent_id FROM category ORDER BY sort_order ASC");
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $categoryList[$i]['id'] = $row['id'];
+            $categoryList[$i]['name'] = $row['name'];
+            $categoryList[$i]['parent_id'] = $row['parent_id'];
+            $i++;
+        }
+        return $categoryList;
     }
+
 
     /**
      * Возвращает массив категорий для списка в админпанели <br/>
@@ -76,7 +105,7 @@ class Category
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function updateCategoryById($id, $name, $sortOrder, $status): bool
+    public static function updateCategoryById($id, $name, $parent_category, $sortOrder, $status): bool
     {
         // Соединение с БД
         $db = Db::getConnection();
@@ -85,6 +114,7 @@ class Category
         $sql = "UPDATE category
             SET 
                 name = :name, 
+                parent_id = :parent_id,
                 sort_order = :sort_order, 
                 status = :status
             WHERE id = :id";
@@ -93,6 +123,7 @@ class Category
         $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':parent_id', $parent_category, PDO::PARAM_INT);
         $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
         $result->bindParam(':status', $status, PDO::PARAM_INT);
         return $result->execute();

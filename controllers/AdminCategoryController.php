@@ -82,9 +82,10 @@ class AdminCategoryController extends AdminBase
             $name = $_POST['name'];
             $sortOrder = $_POST['sort_order'];
             $status = $_POST['status'];
+            $parent_category = $_POST['parent_category'];
 
             // Сохраняем изменения
-            Category::updateCategoryById($id, $name, $sortOrder, $status);
+            Category::updateCategoryById($id, $name, $parent_category, $sortOrder, $status);
 
             // Перенаправляем пользователя на страницу управлениями категориями
             header("Location: /admin/category");

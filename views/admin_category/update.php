@@ -10,6 +10,19 @@
                                value="<?php echo $category['name']; ?>">
                     </div>
                     <div class="form-group">
+                        <label for="category">Родительская категория</label>
+                        <select name="parent_category" id="category" class="form-control">
+                            <option value=""></option>
+                            <?php if (is_array(Category::getCategoriesListAdmin())): ?>
+                                <?php foreach (Category::getCategoriesListAdmin() as $category): ?>
+                                    <option value="<?php echo $category['id']; ?>">
+                                        <?php echo $category['name']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="sort_order">Порядковый номер</label>
                         <input type="text" id="sort_order" name="sort_order" class="form-control" placeholder=""
                                value="<?php echo $category['sort_order']; ?>">
