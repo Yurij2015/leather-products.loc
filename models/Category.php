@@ -18,6 +18,10 @@ class Category
         return $categoryList;
     }
 
+    public  static function getParentCategory($category_id){
+
+    }
+
     /**
      * Возвращает массив категорий для списка в админпанели <br/>
      * (при этом в результат попадают и включенные и выключенные категории)
@@ -29,7 +33,7 @@ class Category
         $db = Db::getConnection();
 
         // Запрос к БД
-        $result = $db->query('SELECT id, name, sort_order, status FROM category ORDER BY sort_order ASC');
+        $result = $db->query('SELECT id, name, parent_id, sort_order, status FROM category ORDER BY sort_order ASC');
 
         // Получение и возврат результатов
         $categoryList = array();
@@ -37,6 +41,7 @@ class Category
         while ($row = $result->fetch()) {
             $categoryList[$i]['id'] = $row['id'];
             $categoryList[$i]['name'] = $row['name'];
+            $categoryList[$i]['parent_id'] = $row['parent_id'];
             $categoryList[$i]['sort_order'] = $row['sort_order'];
             $categoryList[$i]['status'] = $row['status'];
             $i++;
@@ -71,7 +76,7 @@ class Category
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function updateCategoryById($id, $name, $sortOrder, $status)
+    public static function updateCategoryById($id, $name, $sortOrder, $status): bool
     {
         // Соединение с БД
         $db = Db::getConnection();

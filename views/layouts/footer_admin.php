@@ -4,7 +4,7 @@
         <div class="container bg-light">
             <div class="row" style="line-height: 50px; height: 50px;">
                 <p class="ml-3"><?php echo date('Y') ?> </p>
-                <p class="pull-right">&nbsp; Книжный интернет-магазин BookStore</p>
+                <p class="pull-right">&nbsp; Интернет-магазин кожаных изделий Novmanik</p>
             </div>
         </div>
     </div>
