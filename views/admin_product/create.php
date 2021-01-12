@@ -2,7 +2,7 @@
 <div class="container my-4">
     <div class="row">
         <div class="col-md-12">
-            <h4>Добавить новую книгу</h4>
+            <h4>Добавить новый товар</h4>
             <hr>
             <?php if (isset($errors) && is_array($errors)): ?>
                 <ul>
@@ -38,7 +38,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="brand">Издательство</label>
+                        <label for="brand">Производитель</label>
                         <input type="text" name="brand" id="brand" class="form-control" placeholder="" value="">
                     </div>
                     <div class="form-group">

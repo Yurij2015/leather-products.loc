@@ -2,7 +2,7 @@
 <div class="container my-4">
     <div class="row">
         <div class="col-md-12">
-            <h4>Редактировать книгу под номером <?php echo $id; ?></h4>
+            <h4>Редактировать товар под номером <?php echo $id; ?></h4>
             <hr>
             <div class="login-form">
                 <form action="#" method="post" enctype="multipart/form-data">
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="brand">Издательство</label>
+                        <label for="brand">Производитель</label>
                         <input type="text" id="brand" class="form-control" name="brand" placeholder=""
                                value="<?php echo $product['brand']; ?>">
                     </div>

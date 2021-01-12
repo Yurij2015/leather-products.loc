@@ -24,7 +24,7 @@ include ROOT . "/views/layouts/header.php";
                             <tr>
                                 <th>Код товара</th>
                                 <th>Название</th>
-                                <th>Стомость, р</th>
+                                <th>Стоимость, р</th>
                                 <th>Количество, шт</th>
                                 <th>Удалить</th>
                             </tr>

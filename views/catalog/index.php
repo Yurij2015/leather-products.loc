@@ -8,11 +8,47 @@ include ROOT . "/views/layouts/header.php";
             <h3 class="my-3">Категории</h3>
             <div class="list-group">
                 <?php foreach ($categories as $categoryItem) : ?>
-                    <a href="/category/<?= $categoryItem['id']; ?>" class="list-group-item" style="text-decoration: none; color: #1a1a1a">
-                        <?= $categoryItem['name']; ?>
+                    <?php
+                    if (!Category::getChildCategories($categoryItem['id'])) {
+                        ?>
+                        <a href="/category/<?= $categoryItem['id'] ?>" class="list-group-item"
+                        style="text-decoration: none; color: #1a1a1a">
+                        <?= $categoryItem['name'] ?>
+                    <?php } ?>
+                    <?php
+                    if (Category::getChildCategories($categoryItem['id'])) {
+                        $count = count(Category::getChildCategories($categoryItem['id']));
+                        ?>
+                        <a class="dropdown-toggle list-group-item" href="#"
+                           id="dropdownMenuLink?>" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" style="text-decoration: none; color: #1a1a1a">
+                            <?= $categoryItem['name'] ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <?php
+                            for ($i = 0; $i < $count; $i++) {
+                                ?>
+                                <a class="dropdown-item"
+                                   href="/category/<?= Category::getChildCategories($categoryItem['id'])[$i]['id'] ?>">
+                                    <?= Category::getChildCategories($categoryItem['id'])[$i]['name'] ?></a>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
                     </a>
                 <?php endforeach; ?>
             </div>
+
+            <!--            <div class="list-group">-->
+<!--                --><?php //foreach ($categories as $categoryItem) : ?>
+<!--                    <a href="/category/--><?//= $categoryItem['id']; ?><!--" class="list-group-item" style="text-decoration: none; color: #1a1a1a">-->
+<!--                        --><?//= $categoryItem['name']; ?>
+<!--                    </a>-->
+<!--                --><?php //endforeach; ?>
+<!--            </div>-->
         </div>
         <!-- /.col-lg-3 -->
         <div class="col-lg-9 my-4">

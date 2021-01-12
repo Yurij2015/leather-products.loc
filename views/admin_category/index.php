@@ -9,8 +9,8 @@
                         <th>ID категории</th>
                         <th>Название категории</th>
                         <th>Родительская категория</th>
-                        <th>Порядковый номер</th>
-                        <th>Статус</th>
+<!--                        <th>Порядковый номер</th>-->
+<!--                        <th>Статус</th>-->
                         <th></th>
                         <th></th>
                     </tr>
@@ -19,8 +19,8 @@
                             <td><?php echo $category['id']; ?></td>
                             <td><?php echo $category['name']; ?></td>
                             <td><?php echo Category::getCategoryById($category['parent_id'])['name'] ?></td>
-                            <td><?php echo $category['sort_order']; ?></td>
-                            <td><?php echo Category::getStatusText($category['status']); ?></td>
+<!--                            <td>--><?php //echo $category['sort_order']; ?><!--</td>-->
+<!--                            <td>--><?php //echo Category::getStatusText($category['status']); ?><!--</td>-->
                             <td><a href="/admin/category/update/<?php echo $category['id'] ?>">Редактировать</a></td>
                             <td><a href="/admin/category/delete/<?php echo $category['id'] ?>">Удалить</a></td>
                         </tr>

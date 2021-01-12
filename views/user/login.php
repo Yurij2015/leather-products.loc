@@ -15,8 +15,8 @@
                         <form action="#" method="post">
                             <div class="form-group">
                                 <label for="email"></label>
-                                <input type="email" id="email" class="form-control" name="email"
-                                       placeholder="E-mail"
+                                <input type="text" id="email" class="form-control" name="email"
+                                       placeholder="Логин"
                                        value="<?= $email; ?>" required>
                             </div>
                             <div class="form-group">

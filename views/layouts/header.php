@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Novmanik ::   Интернет-магазин кожаных изделий</title>
+    <title>Novmanik :: Интернет-магазин кожаных изделий</title>
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -15,7 +15,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">Novmanik</a>
+        <a class="navbar-brand" href="/">Novmanik <img src="/template/images/logo.jpg" width="40px" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,13 +28,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
-<!--                    <a class="nav-link" href="/about/">О магазине</a>-->
+                    <!--                    <a class="nav-link" href="/about/">О магазине</a>-->
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/catalog/">Каталог</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart/">Корзина (<span id="cart-count"><?php echo Cart::countItems();?></span>)</a>
+                    <a class="nav-link" href="/cart/">Корзина (<span
+                                id="cart-count"><?php echo Cart::countItems(); ?></span>)</a>
 
 
                 </li>
@@ -42,9 +43,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/user/login/">Вход</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/register/">Регистрация</a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="/user/register/">Регистрация</a>-->
+<!--                    </li>-->
                 <?php else: ?>
                     <li class="nav-item">
                         <a class="nav-link" href="/cabinet/">Кабинет</a>

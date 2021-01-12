@@ -16,7 +16,7 @@ include ROOT . "/views/layouts/header.php";
             <div class="list-group mb-4">
                 <?php foreach ($categories as $categoryItem) : ?>
                     <a href="/category/<?= $categoryItem['id']; ?>" class="list-group-item" style="text-decoration: none;">
-                        <?= $categoryItem['name']; ?>
+                        <?= $categoryItem['name'] ?>
                     </a>
                 <?php endforeach; ?>
             </div>

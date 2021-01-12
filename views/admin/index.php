@@ -6,9 +6,9 @@
             <h4>Панель управления сайтом!</h4>
             <div>
                 <p><a class="btn btn-outline-primary" style="width: 100%;"
-                                                             href="/admin/product">Управление книгами</a></p>
+                                                             href="/admin/product">Управление товарами</a></p>
                 <p><a class="btn btn-outline-primary" style="width:100%;"
-                                                             href="/admin/category">Управление категориями книг</a></p>
+                                                             href="/admin/category">Управление категориями товаров</a></p>
                 <p><a class="btn btn-outline-primary" style="width: 100%;"
                                                 href="/admin/order">Управление заказами</a></p>
             </div>

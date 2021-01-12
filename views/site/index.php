@@ -19,8 +19,8 @@ include ROOT . "/views/layouts/header.php";
                     if (Category::getChildCategories($categoryItem['id'])) {
                         $count = count(Category::getChildCategories($categoryItem['id']));
                         ?>
-                        <a class="dropdown-toggle list-group-item" href="#" role="button"
-                           id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="dropdown-toggle list-group-item" href="#"
+                           id="dropdownMenuLink?>" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false" style="text-decoration: none; color: #1a1a1a">
                             <?= $categoryItem['name'] ?>
                         </a>
@@ -29,7 +29,8 @@ include ROOT . "/views/layouts/header.php";
                             for ($i = 0; $i < $count; $i++) {
                                 ?>
                                 <a class="dropdown-item"
-                                   href="/category/<?= Category::getChildCategories($categoryItem['id'])[$i]['id'] ?>"><?= Category::getChildCategories($categoryItem['id'])[$i]['name'] ?></a>
+                                   href="/category/<?= Category::getChildCategories($categoryItem['id'])[$i]['id'] ?>">
+                                    <?= Category::getChildCategories($categoryItem['id'])[$i]['name'] ?></a>
                                 <?php
                             }
                             ?>
@@ -40,7 +41,6 @@ include ROOT . "/views/layouts/header.php";
                     </a>
                 <?php endforeach; ?>
             </div>
-
         </div
                 <!-- /.col-lg-3 -->
 
@@ -51,6 +51,7 @@ include ROOT . "/views/layouts/header.php";
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
@@ -61,6 +62,9 @@ include ROOT . "/views/layouts/header.php";
                     </div>
                     <div class="carousel-item">
                         <img class="d-block img-fluid" src="/template/images/slider/Slide3.jpg" alt="Third slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block img-fluid" src="/template/images/slider/Slide4.jpg" alt="Fourth slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
